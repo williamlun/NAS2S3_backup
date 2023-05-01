@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "nas2s3-backup"
+version = "0.1.0"
+description = ""
+authors = ["Leung Wai Lun <leungwilliamlun@gmail.com>"]
+readme = "README.md"
+packages = [{include = "nas2s3_backup"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+boto3 = "^1.26.123"
+loguru = "^0.7.0"
+pylint = "^2.17.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
