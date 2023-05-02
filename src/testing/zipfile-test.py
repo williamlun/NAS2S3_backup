@@ -3,7 +3,8 @@ from os.path import isfile, isdir, join
 import zipfile
 from loguru import logger
 
-target_dir = "H:\\testing\\sub2"
+# target_dir = "H:\\testing\\sub2"
+target_dir = "/Users/williamleung/Documents/play_myself/testing"
 small_file_size = 50 * 1024 * 1024
 mypath = target_dir
 
@@ -17,7 +18,7 @@ def get_file(dir):
     files = os.listdir(dir)
     result = []
     for f in files:
-        if isfile(join(dir, f)):
+        if isfile(join(dir, f)): 
             result.append(join(dir, f))
     return result
 
@@ -33,10 +34,11 @@ def filter_size(files: list, size_in_byte: int):
 
 
 def zip_files(dir: str, files: list):
-    output_file_name = dir + "\\smallfile.zip"
+    output_file_name = dir + "/smallfile.zip"
     with zipfile.ZipFile(output_file_name, "w", zipfile.ZIP_DEFLATED) as zip:
-        for f in files:
-            zip.write(f)
+        for file in files:
+            arcname = os.path.basename(file)
+            zip.write(file, arcname=arcname)
 
 
 def main():
